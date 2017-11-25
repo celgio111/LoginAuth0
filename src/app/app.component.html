@@ -1,0 +1,49 @@
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">AuthApp</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a *ngIf="auth.isAuthenticated()" routerLink="./">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <li><a *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</a></li>
+      <li><a routerLink="/profile" *ngIf="auth.isAuthenticated()">Profile</a></li>
+      <li><a *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<h5 *ngIf="!auth.isAuthenticated()">You are not logged in, please click the login link above</h5>
+
+<!-- 
+      <button class="btn btn-primary btn-margin" *ngIf="auth.isAuthenticated()" routerLink="./">
+          Home
+      </button>
+
+      <button class="btn btn-primary btn-margin" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">
+          Log In
+      </button>
+
+      <button class="btn btn-primary btn-margin" routerLink="/profile" *ngIf="auth.isAuthenticated()">
+    Profile</button>
+
+      <button class="btn btn-primary btn-margin" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
+          Log Out
+      </button>
+
+    </div>
+  </div>
+</nav> -->
+
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
